@@ -1,0 +1,30 @@
+.job-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .job-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .job-card img {
+    max-width: 100%;
+  }
+  
+  .job-details h2 {
+    margin-top: 0;
+  }
+  
+  .job-details p {
+    margin: 5px 0;
+  }
+  
+  .job-details a {
+    display: block;
+    margin-top: 10px;
+  }
+  

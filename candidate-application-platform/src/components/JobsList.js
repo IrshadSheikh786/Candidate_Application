@@ -4,6 +4,16 @@ import '../styles/styles.css';
 
 function JobList() {
   const [jobs, setJobs] = useState([]);
+  const [filteredJobs, setFilteredJobs] = useState([]);
+  const [filters, setFilters] = useState({
+    minExp: null,
+    companyName: '',
+    location: '',
+    remote: false,
+    techStack: '',
+    role: '',
+    minBasePay: null
+  });
   const [totalCount, setTotalCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -50,6 +60,23 @@ function JobList() {
     }
   }, [page, totalCount]);
 
+  useEffect(() => {
+    // Apply filters to jobs when filters or jobs change
+    const filteredListings = jobs.filter(job => {
+      return (
+        (!filters.minExp || (job.minExp && job.minExp >= filters.minExp)) &&
+        (!filters.companyName || job.companyName.toLowerCase().includes(filters.companyName.toLowerCase())) &&
+        (!filters.location || job.location.toLowerCase().includes(filters.location.toLowerCase())) &&
+        (!filters.remote || job.location.toLowerCase() === 'remote') &&
+        (!filters.techStack || job.jobRole.toLowerCase().includes(filters.techStack.toLowerCase())) &&
+        (!filters.role || job.jobRole.toLowerCase().includes(filters.role.toLowerCase())) &&
+        (!filters.minBasePay || (job.minJdSalary && job.minJdSalary >= filters.minBasePay))
+      );
+    });
+
+    setFilteredJobs(filteredListings);
+  }, [filters, jobs]);
+
   const fetchJobs = async ({ limit, offset }) => {
     try {
       const response = await fetch('https://api.weekday.technology/adhoc/getSampleJdJSON', {
@@ -72,7 +99,7 @@ function JobList() {
 
   const handleScroll = () => {
     if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-      // Increase the limit when user reaches the bottom of the page
+      // Increase the limit when the user reaches the bottom of the page
       limit.current += 10;
     }
   };
@@ -82,11 +109,29 @@ function JobList() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleFilterChange = (filterName, value) => {
+    setFilters({ ...filters, [filterName]: value });
+  };
+
+
+ 
+
   return (
     <div className="job-list">
       <h2>Total Jobs: {totalCount}</h2>
+      <div className="filters">
+        <input type="number" placeholder="Min Experience" value={filters.minExp || ''} onChange={(e) => handleFilterChange('minExp', e.target.value)} />
+        <input type="text" placeholder="Company Name" value={filters.companyName} onChange={(e) => handleFilterChange('companyName', e.target.value)} />
+        <input type="text" placeholder="Location" value={filters.location} onChange={(e) => handleFilterChange('location', e.target.value)} />
+        <select value={filters.remote} onChange={(e) => handleFilterChange('remote', e.target.value === 'true')}>
+          <option value="">Remote/On-site</option>
+          <option value="true">Remote</option>
+          <option value="false">On-site</option>
+        </select>
+        {/* Add more filter components as needed */}
+      </div>
       <div className="job-grid">
-        {jobs.map((job, index) => (
+        {filteredJobs.map(job => (
           <JobCard key={job.jdUid} job={job} />
         ))}
       </div>
@@ -100,5 +145,6 @@ function JobList() {
     </div>
   );
 }
+
 
 export default JobList;

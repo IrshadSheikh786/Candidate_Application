@@ -1,0 +1,123 @@
+.App {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cards_item {
+    width: calc(33.33% - 30px);
+    margin: 15px;
+  }
+  
+  
+  .card {
+  
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card_image img {
+    
+    width: 50px;
+    height: 50px;
+  }
+  
+  .card_content {
+    padding: 20px;
+  }
+  
+  .card_title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .card_text {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .card_btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card_btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .made_by {
+    margin-top: 40px;
+    font-style: italic;
+    color: #666;
+  }
+  
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+  }
+  
+  .filter-item {
+    flex: 0 0 calc(16.66% - 10px); /* Each item takes 1/6th of the width with spacing */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .filter-item label {
+    margin-right: 10px;
+    width: 120px; /* Fixed width for labels (adjust as needed) */
+    flex-shrink: 0; /* Prevent labels from shrinking */
+  }
+  
+  .filter-item input,
+  .filter-item select {
+    flex: 1; /* Input fields take remaining width */
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  .filters > .MuiFormControl-root {
+    margin-right: 10px; 
+    margin-bottom: 10px; 
+  }
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .cards_item {
+      width: calc(50% - 30px); /* Two cards per row on medium screens */
+    }
+    .filter-item {
+      flex-basis: calc(50% - 20px); /* Two items per row on medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cards_item {
+      width: calc(100% - 30px); /* One card per row on small screens */
+    }
+    .filter-item {
+      flex-basis: calc(33.33% - 10px); /* Each item takes 1/3rd of the width on smaller screens */
+    }
+  }
+  

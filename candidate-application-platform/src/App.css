@@ -1,123 +1,164 @@
 .App {
-    padding: 20px;
-    text-align: center;
-  }
+  padding: 20px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
   
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-  }
   
+}
+
+.cards_item {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  margin-top: 10px;
+  /* gap: 0p; */
+}
+
+
+.card {
+  width: 70%;
+  border-radius: 10px;
+  border: 2px solid #D3D3D3; 
+   overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.btn_custom{
+  margin-bottom: 20px;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card_image{
+  display: flex;
+  align-items: center;
+  padding: 0px;
+}
+.card_image img {
+  object-fit: contain;
+  width: 50px;
+  height: 100px;
+  margin-left: 20px;
+
+}
+
+.card_items  {
+  font-size: 0.9rem;
+  text-align: start;
+  margin-left: 10px;
+  /* color: #666; */
+}
+.card_items h4 {
+  margin: 0px;
+  color: #CCCCCC;
+}
+.card_items p {
+  margin: 2px 0;
+  font-weight: 100;
+  font-size: 1rem;
+  text-align: start;
+  color: #666;
+  line-height:1;
+  font-family: sans-serif;
+
+}
+.card_content {
+  flex: 1;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.card_title {
+  font-size: 1rem;
+ 
+  /* margin: 5px; */
+}
+.card_items{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.card_text {
+  text-align: start;
+  margin-left: 10px;
+  font-weight: 100;
+  font-size: 1rem;
+  color: #666;
+  line-height:1;
+  font-family: sans-serif;
+}
+.exp_heading{
+  font-family: sans-serif;
+}
+
+.btn_custom_ref{
+ margin-top: 10px;
+}
+.card_btn:hover {
+  background-color: #0056b3;
+}
+
+.made_by {
+  margin-top: 40px;
+  font-style: italic;
+  color: #666;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.filter-item {
+  flex: 0 0 calc(16.66% - 10px); 
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.filter-item label {
+  margin-right: 10px;
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.filter-item input,
+.filter-item select {
+  flex: 1; 
+  padding: 8px;
+  box-sizing: border-box;
+}
+.filters > .MuiFormControl-root {
+  margin-right: 10px; 
+  margin-bottom: 10px; 
+}
+/* Responsive Styles */
+@media (max-width: 1200px) {
   .cards_item {
-    width: calc(33.33% - 30px);
-    margin: 15px;
+    width: calc(50% - 30px); 
   }
-  
-  
-  .card {
-  
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card_image img {
-    
-    width: 50px;
-    height: 50px;
-  }
-  
-  .card_content {
-    padding: 20px;
-  }
-  
-  .card_title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .card_text {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  .card_btn {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .card_btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .made_by {
-    margin-top: 40px;
-    font-style: italic;
-    color: #666;
-  }
-  
-  .filters {
-    display: flex;
-    flex-wrap: wrap;
-    /* justify-content: space-between; */
-    gap: 10px;
-    margin-bottom: 20px;
-    margin-left: 10px;
-  }
-  
   .filter-item {
-    flex: 0 0 calc(16.66% - 10px); /* Each item takes 1/6th of the width with spacing */
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+    flex-basis: calc(50% - 20px); 
   }
-  
-  .filter-item label {
-    margin-right: 10px;
-    width: 120px; /* Fixed width for labels (adjust as needed) */
-    flex-shrink: 0; /* Prevent labels from shrinking */
+}
+
+@media (max-width: 768px) {
+  .cards_item {
+    width: calc(100% - 30px); 
   }
-  
-  .filter-item input,
-  .filter-item select {
-    flex: 1; /* Input fields take remaining width */
-    padding: 8px;
-    box-sizing: border-box;
+  .filter-item {
+    flex-basis: calc(33.33% - 10px); 
   }
-  .filters > .MuiFormControl-root {
-    margin-right: 10px; 
-    margin-bottom: 10px; 
-  }
-  /* Responsive Styles */
-  @media (max-width: 1200px) {
-    .cards_item {
-      width: calc(50% - 30px); /* Two cards per row on medium screens */
+  Button {
+    max-Width: "100%";
+    padding : "0 10px"
     }
-    .filter-item {
-      flex-basis: calc(50% - 20px); /* Two items per row on medium screens */
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .cards_item {
-      width: calc(100% - 30px); /* One card per row on small screens */
-    }
-    .filter-item {
-      flex-basis: calc(33.33% - 10px); /* Each item takes 1/3rd of the width on smaller screens */
-    }
-  }
-  
+}

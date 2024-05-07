@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Select, MenuItem, FormControl, InputLabel ,TextField} from '@material-ui/core';
+import { Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 
 const JobFilter = ({ filters, setFilters ,jobs}) => {
   // Destructure filter properties with default values
   const {
-    minExperience = '',
     companyName = '',
     location = '',
     remote = '',

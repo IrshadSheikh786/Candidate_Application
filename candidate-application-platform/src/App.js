@@ -14,7 +14,7 @@ function App() {
     minBasePay: '',
     companyName: ''
   });
-  const [limit, setLimit] = useState(10);
+  const [limit] = useState(10);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   
